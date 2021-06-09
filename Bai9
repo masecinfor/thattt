@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
+int main()
+{
+    int N;
+    printf("Nhap n:");
+    scanf("%d", &N);
+    bool check[N+1];
+
+    for(int i=2; i<=N; i++)
+        check[i] = true;
+
+    for(int i=2; i<=N; i++)
+    {
+        if(check[i] == true)
+        {
+            for(int j=2*i; j<=N; j+=i)
+                check[j]=false;
+        }
+    }
+
+    for(int i=2; i<=N; i++)
+    {
+        if(check[i]== true)
+            printf("%d ", i);
+    }
+    getch();
+}
