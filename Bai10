@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int mod( int a, int b)
+{
+    a%=b;
+    if(a<0)
+    {
+        a+=b;
+    }
+    return a;
+
+}
+int gcd( int a, int b)
+{
+    int A=a, B=b, R;
+    while(B>0)
+    {
+       R= mod(A, B);
+       A=B, B=R;
+    }
+    return A;
+}
+int rho(int n)
+{
+    long long a=2, b=2, d;
+    for(int i=1; i<=n; i++)
+    {
+        a=abs(mod((a*a+4),n));
+        b=abs(mod((b*b+4),n));
+        b=abs(mod((b*b+4),n));
+
+
+        d=gcd(abs(a-b),n);
+        if(167<d && d<n)
+        {
+            printf("KQ: d= %d", d);
+            break;
+        }
+    }
+}
+int main()
+{
+    int n;
+    printf("Nhap n: ");
+    scanf("%d", &n);
+    rho(n);
+    getch();
+}
